@@ -1,0 +1,423 @@
+<html ng-app="myApp" ng-strict-di="" class="ng-scope">
+<head lang="fr">
+    <!-- Prevent Duplicate Content By Iframe : solution powered by killduplicate.com -->
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script><script language="JavaScript">
+        if(window.parent.length!=0) {window.top.location.replace(document.location.href);}
+    </script>
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <!-- SEO 4 SPA -->
+    <meta name="fragment" content="!">
+
+    <title ng-bind="getTitle()" class="ng-binding">Convertisseur JSON vers CSV</title>
+
+    <!-- https://docs.angularjs.org/error/$location/nobase -->
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- SEO -->
+    <meta name="description" content="Utilitaire permettant de convertir un fichier JSON vers le format CSV">
+
+    <link rel="author" href="humans.txt">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- http://www.favicon-generator.org/ -->
+
+<!-- build:css /css/hugo-maugey-webmaster.css -->
+    <!-- FONT AWESOME CDN -->
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP CSS CDN -->
+    <!--<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- PROJECT CSS -->
+    <link href="/css/hugo.css" rel="stylesheet">
+    <link href="/css/backtop.css" rel="stylesheet">
+    <link href="/css/off-canevas-menu-left.css" rel="stylesheet">
+    <link href="/css/webfonts/ss-standard.css" rel="stylesheet">
+    <link href="/css/style-polaroid.css" rel="stylesheet">
+    <link href="/css/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-tooltip.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-carousel.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-navbar.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-jumbotron.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-typography.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-pagination.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-table.css" rel="stylesheet">
+    <link href="/css/bootstrap/bootstrap-panel.css" rel="stylesheet">
+    <link href="/css/bootstrap/glyphicons.css" rel="stylesheet">
+    <link href="/css/bootstrap-doc-sidebar.css" rel="stylesheet">
+    <link href="/css/bootstrap-callout.css" rel="stylesheet">
+    <link href="/css/prettyprint.css" rel="stylesheet">
+    <!-- PRISM SYNTAX HIGHLIGHTER -->
+    <link href="/css/prism.css" rel="stylesheet">
+    <!-- Angular Seo Newsletter -->
+    <link href="/bower_components/angular-seo-newsletter/dist/angular-seo-newsletter.min.css" rel="stylesheet">
+    <link href="/css/angular-seo-newsletter-custom.css" rel="stylesheet">
+    <!-- DNS Checker -->
+    <link rel="stylesheet" href="/bower_components/angular-dns-propagation-checker/build/dns-checker.min.css">
+<!-- endbuild -->
+
+    <!-- Polyfills -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-sham.min.js"></script>
+
+<!-- build:libraries /js/hugo-maugey-webmaster-lib.js -->
+    <!-- ANGULAR does some things with CSS so it's good to load this in the head -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <!-- ANGULAR UI BOOTSTRAP TEMPLATE JS -->
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!-- ANGULAR UI ROUTER : https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js -->
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- ANGULAR ANALYTICS : https://github.com/luisfarzati/angulartics -->
+    <script src="/bower_components/angulartics/dist/angulartics.min.js"></script>
+    <script src="/bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js"></script>
+    <script src="/js/lib/ga.js"></script>
+    <!-- ANGULAR TRANSLATE -->
+        <script src="/bower_components/angular-translate/angular-translate.min.js"></script>
+        <!-- ANGULAR TRANSLATE COOKIE STORAGE -->
+        <script src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+        <!-- ANGULAR TRANSLATE LOCAL STORAGE -->
+        <script src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+        <!-- ANGULAR TRANSLATE PARTIAL LOADER -->
+        <script src="/bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+        <!-- ANGULAR TRANSLATE LOG -->
+        <script src="/bower_components/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
+        <!-- ANGULAR TRANSLATE INTERPOLATION MESSAGE FORMAT -->
+        <script src="/bower_components/messageformat/messageformat.js"></script>
+        <!-- <script src="/bower_components/messageformat/locale/en.js"></script>
+        <script src="/bower_components/messageformat/locale/fr.js"></script> -->
+        <script src="/bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.min.js"></script>
+    <!-- ANGULAR CHECK IE : https://github.com/IamAdamJowett/angular-check-ie -->
+    <script src="/bower_components/angular-check-ie/checkie.directive.js"></script>
+
+    <!-- ANGULAR SMOOTH SCROLL -->
+    <script src="/bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
+
+    <!-- ANGULAR DISQUS -->
+    <script src="/bower_components/angularUtils-disqus/dirDisqus.js"></script>
+
+    <!-- ANGULAR CLICK OUTSIDE -->
+    <script src="/bower_components/angular-click-outside/clickoutside.directive.js"></script>
+
+    <!-- MOMENT.JS -->
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <!-- <script src="/bower_components/moment/locale/fr.js"></script> -->
+    <script src="/bower_components/angular-moment/angular-moment.min.js"></script>
+    <!-- <script src="/js/extra/accounting.min.js"></script> -->
+    
+    <script src="/bower_components/angular-seo-newsletter/dist/angular-seo-newsletter.min.js"></script>
+
+    <!-- PRISM SYNTAX HIGHLIGHTER -->
+    <script src="/js/lib/prism.js" "data-manual"=""></script>
+    <!-- ANGULAR CLIPBOARD -->
+    <script src="/bower_components/angular-clipboard/angular-clipboard.js"></script>
+    <!-- ANGULAR UI CHECKBOX -->
+    <script src="/bower_components/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js"></script>
+    <!--  -->
+    <script src="/bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
+    <!-- Angular Scroll -->
+    <script src="/bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <!-- DNS Checker -->
+    <script src="/bower_components/angular-dns-propagation-checker/build/dns-checker.min.js"></script>
+<!-- endbuild -->
+</head>
+
+<body ng-controller="ApplicationController" translate-cloak="" class="ng-scope">
+
+<div id="site-wrapper" ng-class="{'show-nav':isMenuOpen}" class="">
+
+    <div id="site-canvas" class="ease">
+
+        <!-- ANCHOR TAG FOR SCROLL TOP BUTTON -->
+        <a id="top-scroll" name="top"></a>
+        
+        <!--  HEADER -->
+        <div id="home">
+	<a href="" ng-click="menu()" class="home" title="Sommaire">
+		<!-- ui-sref="app.root.locale.sommaire({locale:$stateParams.locale})"
+		ui-sref-opts="{absolute:true}" -->
+		<span class="logo">
+			<i class="fa fa-paw"></i>
+		</span>
+	</a>
+
+	<div class="menu clearfix">
+		<div class="page">
+			<a href="" ng-click="menu()" class="left">
+					<span class="ss-icon">rows</span>
+			</a>
+			<p class="right strong">Hugo Maugey</p>
+		</div>
+	</div>
+
+</div>
+        <!-- LEFT MENU -->
+        <div id="site-menu" click-outside="closeMenu()" outside-if-not="home">
+    <div style="padding:15px;">
+
+        <h3>Hugo Maugey<br>Web ! Master ?</h3>
+
+        <h4 style="text-align:center;line-height:50px;">Ici</h4>
+        <ul class="nav navbar-nav navbar-right nav-menu">
+            <li>
+                <a href="http://hugo.maugey.test/" ui-sref="app.root({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix" title="Accueil">
+                    <i class="fa fa-lg fa-home"></i>
+                    <span class="linkText">Accueil</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://hugo.maugey.test/creation-site-internet" ui-sref="app.root.clients({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-heartbeat"></i>
+                    <span class="linkText">Infos (Ma Philosophie)</span> 
+                </a>
+            </li>
+            <li>
+                <a href="http://hugo.maugey.test/articles" ui-sref="app.root.articles({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-bullhorn"></i>
+                    <span class="linkText">Articles (Intéressants ?)</span> 
+                </a>
+            </li>
+            <li>
+                <a href="http://hugo.maugey.test/webmaster/creation-site-internet" ui-sref="app.root.projects.creation({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-search"></i>
+                    <span class="linkText">Mon travail disséqué</span> 
+                </a>
+            </li>
+            <li>
+                <a href="http://hugo.maugey.test/developeur-web" ui-sref="app.root.webdev({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-code"></i>
+                    <span class="linkText">Web Developper Snippets</span> 
+                </a>
+            </li>
+            <li>
+                <a href="http://hugo.maugey.test/conversion/encode-decode-punycode-online" ui-sref="app.root.convertors.punycode({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-recycle"></i>
+                    <span class="linkText">Convertisseurs</span> 
+                </a>
+            </li>
+            <!-- <li>
+                <a href ui-sref="app.root.competences({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-briefcase"></i>
+                    <span class="linkText">Compétences</span> 
+                </a>
+            </li> -->
+            <li>
+                <a href="http://hugo.maugey.test/contact" ui-sref="app.root.contact({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}" class="clearfix">
+                    <i class="fa fa-lg fa-envelope-o"></i>
+                    <span class="linkText">Contact Pro</span> 
+                </a>
+            </li>
+        </ul>
+        
+        <h4 style="text-align:center;line-height:50px;margin-top:20px;">Ailleurs</h4>
+        
+        <ul class="nav navbar-nav navbar-right nav-menu">
+            <li>
+                <a rel="author" href="http://www.linkedin.com/pub/hugo-maugey/25/ab9/bb0" target="_blank" class="clearfix" title="Lunked In">
+                    <i class="fa fa-lg fa-linkedin-square"></i>
+                    <span class="linkText">Linked In</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a rel="author" href="http://fr.viadeo.com/fr/profile/hugo.maugey" target="_blank" class="clearfix" title="Viadeo">
+                    <i class="fa fa-lg fa-unlink"></i>
+                    <span class="linkText">Viadeo</span>
+                </a>
+            </li> -->
+            <li>
+                <a rel="author" href="skype:hugsbrugs?userinfo" target="_blank" class="clearfix" title="Skype">
+                    <i class="fa fa-lg fa-skype"></i>
+                    <span class="linkText">Skype</span>
+                </a>
+            </li>
+            
+            <li>
+                <a rel="author" href="http://stackoverflow.com/users/2295192/hugsbrugs" target="_blank" class="clearfix" title="Stackoverflow">
+                    <i class="fa fa-lg fa-stack-overflow"></i>
+                    <span class="linkText">Stackoverflow</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" href="https://github.com/hugsbrugs" target="_blank" class="clearfix" title="GitHub">
+                    <i class="fa fa-lg fa-github"></i>
+                    <span class="linkText">GitHub</span>
+                </a>
+            </li>
+            <!--<li>
+                <a href="https://www.facebook.com/hugo.maugey" target="_blank" class="clearfix" title="Facebook">
+                    <i class="fa fa-lg fa-facebook"></i>
+                    <span class="linkText">Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" href="https://plus.google.com/104319496108756306449?authuser=0" target="_blank" class="clearfix" title="Google +">
+                    <i class="fa fa-lg fa-google-plus"></i>
+                    <span class="linkText">Google +</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" href="https://trello.com/hugomaugey" target="_blank" class="clearfix" title="Trello">
+                    <i class="fa fa-lg fa-trello"></i>
+                    <span class="linkText">Trello</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" href="https://twitter.com/hugomaugey" target="_blank" class="clearfix" title="Trello">
+                    <i class="fa fa-lg fa-twitter"></i>
+                    <span class="linkText">Twitter</span>
+                </a>
+            </li>  -->
+
+        </ul>
+
+        <h4 style="text-align:center;line-height:50px;margin-top:20px;">Outils</h4>
+        
+        <ul class="nav navbar-nav navbar-right nav-menu">
+            <li>
+                <a rel="author" ui-sref="app.root.tools.dns({locale:$stateParams.locale})" class="clearfix" title="MySQL Diff Online Tool" href="/tools/dns-propagation-checker">
+                    <i class="fa fa-lg fa-sitemap"></i>
+                    <span class="linkText">Propagation DNS</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" ui-sref="app.root.tools.htmltable({locale:$stateParams.locale})" class="clearfix" title="Online Convert HTML Table Colspan Rowspan" href="/tools/convert-html-table">
+                    <i class="fa fa-lg fa-html5"></i>
+                    <span class="linkText">Convert HTML Table</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" ui-sref="app.root.tools.json2csv({locale:$stateParams.locale})" class="clearfix" title="Online JSON 2 CSV" href="/tools/json2csv">
+                    <i class="fa fa-lg fa-file-code-o"></i>
+                    <span class="linkText">JSON 2 CSV</span>
+                </a>
+            </li>
+            <li>
+                <a rel="author" ui-sref="app.root.tools.mysqldiff({locale:$stateParams.locale})" class="clearfix" title="MySQL Diff Online Tool" href="/tools/mysqldiff">
+                    <i class="fa fa-lg fa-database"></i>
+                    <span class="linkText">MySQL Diff</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a rel="author" href="http://hugsbrugs.github.io/customer-time-reminder/" target="_blank" class="clearfix" title="Suivi du temps client - AngularJS local storage">
+                    <i class="fa fa-lg fa-clock-o"></i>
+                    <span class="linkText">Suivi temps</span>
+                </a>
+            </li> -->            
+        </ul>
+        
+    </div>
+    <!-- <div style="height:100%;">
+        <div style="position:absolute;bottom:0;left:0;padding:10px;width:300px;">
+            <div style="width:100%;text-align: center;">
+                Animation du menu :
+                <select
+                    ng-options="transition for transition in transitions"
+                    ng-model="current_transition"
+                    class="form-controller"></select>
+            </div>
+        </div>
+    </div> -->
+    
+    <div style="position:absolute;bottom:0px;left:0px;width:300px;text-align:center;">
+        <a href="http://hugo.maugey.test/terms-of-service" ui-sref="app.root.cgu({locale:$stateParams.locale})" ui-sref-opts="{absolute:true}">
+            <span style="font-size:0.8em;color: #fff;">Conditions générales</span> 
+        </a>
+    </div>
+</div>
+            
+            <div><!--  class="row" -->
+
+                <div class="ui-view-container">
+
+                    <!-- THIS IS WHERE CONTENT IS INJECTED -->
+                    <div class="checkie ng-binding ng-isolate-scope" data-ng-class="{outdated: outdated}"><!-- ngIf: outdated === false --><div data-ng-if="outdated === false" ng-transclude="" class="ng-scope"> <!-- checkie-debug="6" -->
+                        <!-- uiView: --><div ui-view="" autoscroll="true" class="ng-scope"><div class="container-fluid ng-scope">
+	<div class="row">
+        <div class="col-sm-12">
+            <!-- uiView: --><div ui-view="" autoscroll="true" class="ng-scope"><div class="row ng-scope">
+    <div class="col-sm-12 jumbotron">
+        <h1 class="text-center"><i class="fa fa-file-code-o"></i> JSON -&gt; CSV</h1>
+    </div>
+
+    <div class="col-sm-12 margin-bottom-lg">
+        <p class="text-justify">Le <code class="txt">JSON</code> et le <code class="txt">CSV</code> sont deux des formats les plus utilisés et très utiles chacun dans leur genre. Pouvoir passer d'un fichier JSON à CSV permet d'exploiter les données avec un tableur ou de remplir une base de données <code class="txt">MySQL</code>.</p>
+    </div>
+</div>
+
+
+<div class="row margin-bottom-lg ng-scope">
+    <div class="col-sm-12">
+	
+		<form name="json2csvForm" ng-submit="convert()" novalidate="" class="ng-pristine ng-valid">
+
+			<!-- File -->
+			<label for="file">Choisissez un fichier</label>
+			<input type="file" name="file" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="file">
+
+			<!-- Text -->
+			<label for="json">Ou coller directement votre JSON</label>
+			<textarea name="json" class="form-control ng-pristine ng-untouched ng-valid ng-empty" rows="20" ng-model="json"></textarea>
+	
+			<button type="submit" class="btn btn-success pull-right margin-top-md">GO !</button>
+		</form>
+
+    </div>
+</div>
+
+<iframe style="height: 1000px !important;" src="https://hugo.maugey.fr/extra/json2csv/" class="ng-scope"></iframe></div>
+        </div>
+    </div>
+</div></div>
+                    </div><!-- end ngIf: outdated === false --></div>
+            
+                </div>
+            
+            </div>
+            
+    </div>
+</div>
+
+<!--  FOOTER -->
+<!-- <webmaster-footer></webmaster-footer> -->
+
+<!-- BUTTON SCROLL TOP -->
+<backtop scroll-to="top-scroll" container-id="site-wrapper" duration="1800" id="backtop" class="light ng-isolate-scope">
+    <span><i class="fa fa-2x fa-chevron-up"></i></span>
+</backtop>
+
+<!-- build:angular /js/hugo-maugey-webmaster-app.js -->
+    <!-- ANGULAR MyApp PROJECT -->
+    <script src="/js/app.js"></script>
+    <!-- APP -->
+    <script src="/js/app/AppDirectives.js"></script>
+    <script src="/js/app/AppFilters.js"></script>
+    <script src="/js/app/AppUtilities.js"></script>
+    <script src="/js/app/AppServices.js"></script>
+    <script src="/js/app/AppControllers.js"></script>
+    <script src="/js/app/AppRoutes.js"></script>
+    <script src="/js/app/AppConfigs.js"></script>
+
+    <script src="/js/app/WebmasterSnippets/WebmasterSnippetsControllers.js"></script>
+    <script src="/js/app/WebmasterSnippets/WebmasterSnippetsServices.js"></script>
+    <script src="/js/app/WebmasterSnippets/WebmasterSnippetsConfigs.js"></script>
+    <script src="/js/app/WebmasterSnippets/WebmasterSnippetsDirectives.js"></script>
+    <script src="/js/app/WebmasterSnippets/WebmasterSnippetsRoutes.js"></script>
+
+    <script src="/js/app/ShellCmdReplacer/ShellCmdReplacerControllers.js"></script>
+<!-- endbuild -->
+
+
+
+<div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1080</span> x <span class="tooltipHeight" id="winHeight">1896</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1080</span> x <span class="tooltipHeight" id="vpHeight">1327</span></div></body></html>

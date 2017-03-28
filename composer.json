@@ -1,0 +1,26 @@
+{
+    "name": "hugsbrugs/php-xpath",
+    "description": "PHP XPath Utilities",
+    "authors": [
+        {
+            "name": "Hugo Maugey",
+            "email": "hugo@maugey.fr",
+            "homepage": "https://hugo.maugey.fr",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "hugsbrugs/php-http": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload":{
+    	"psr-4": {"Hug\\": "src/Hug/"}
+    },
+    "autoload-dev": {
+        "psr-4": { "Hug\\Tests\\": "tests/Hug/" }
+    }
+}

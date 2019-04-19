@@ -13,10 +13,6 @@
     "require": {
         "hugsbrugs/php-http": "dev-master"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^6.0",
-        "satooshi/php-coveralls": "dev-master"
-    },
     "autoload":{
     	"psr-4": {"Hug\\": "src/Hug/"}
     },

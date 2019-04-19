@@ -53,7 +53,7 @@ Xpath::extract_iframe($html, $domain = 'hugo.maugey.fr');
 ## Unit Tests
 
 ```
-composer exec phpunit
+phpunit --bootstrap vendor/autoload.php tests
 ```
 
 ## Author

@@ -19,7 +19,7 @@ final class XpathTest extends TestCase
     // public $html_invalid;
     public $html_iframe;
 
-    function __construct()
+    function setUp(): void
     {
         $data = realpath(__DIR__ . '/../../../data/');
         $this->html = file_get_contents($data . '/free.fr.html');
@@ -38,7 +38,7 @@ final class XpathTest extends TestCase
     {
         $query = '//a';
         $test = Xpath::extract_all($this->html, $query);
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
     }
 
     /**
@@ -62,7 +62,7 @@ final class XpathTest extends TestCase
     {
         $query = '//body//h3';
         $test = Xpath::extract_first($this->html, $query);
-        $this->assertInternalType('string', $test);
+        $this->assertIsString($test);
     }
 
     /**
@@ -84,7 +84,7 @@ final class XpathTest extends TestCase
     public function testCanGetBodyWithValidHtml()
     {
         $test = Xpath::get_body($this->html);
-        $this->assertInternalType('string', $test);
+        $this->assertIsString($test);
     }
 
     /**
@@ -93,7 +93,7 @@ final class XpathTest extends TestCase
     // public function testCannotGetBodyWithInvalidHtml()
     // {
     //     $test = Xpath::get_body($html);
-    //     $this->assertInternalType('array', $test);
+    //     $this->assertIsArray($test);
     // }
 
     /* ************************************************* */
@@ -107,7 +107,7 @@ final class XpathTest extends TestCase
     {
         $new_body = '<div>coucou toi</div>';
         $test = Xpath::replace_body($this->html, $new_body);
-        $this->assertInternalType('string', $test);
+        $this->assertIsString($test);
     }
 
     /**
@@ -116,7 +116,7 @@ final class XpathTest extends TestCase
     // public function testCannotReplaceBodyWithInalidHtml()
     // {
     //     $test = Xpath::replace_body($html, $new_body);
-    //     $this->assertInternalType('string', $test);
+    //     $this->assertIsString($test);
     // }
 
     /* ************************************************* */
@@ -131,7 +131,7 @@ final class XpathTest extends TestCase
         $query = '//body//div[@class="inscriptionadsl"]';
         $style_property = 'height';
         $test = Xpath::extract_style($this->html, $query, $style_property);
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
     }
 
 
@@ -146,7 +146,7 @@ final class XpathTest extends TestCase
     {
         $domain = 'hugo.maugey.fr';
         $test = Xpath::extract_iframe($this->html_iframe, $domain);
-        $this->assertInternalType('string', $test);
+        $this->assertIsString($test);
     }
 
     /**

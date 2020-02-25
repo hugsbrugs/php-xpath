@@ -1,27 +1,31 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8bf855972fca70e727183d750aa487a",
+    "content-hash": "421f70c6384987c5e2af971ad477082c",
     "packages": [
         {
             "name": "hugsbrugs/php-http",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hugsbrugs/php-http.git",
-                "reference": "37ef38671d6b56f292473618cc6f87e66ff0f872"
+                "reference": "518de8515ba63cdea968304cf3e77cdcf0c861ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hugsbrugs/php-http/zipball/37ef38671d6b56f292473618cc6f87e66ff0f872",
-                "reference": "37ef38671d6b56f292473618cc6f87e66ff0f872",
+                "url": "https://api.github.com/repos/hugsbrugs/php-http/zipball/518de8515ba63cdea968304cf3e77cdcf0c861ee",
+                "reference": "518de8515ba63cdea968304cf3e77cdcf0c861ee",
                 "shasum": ""
             },
             "require": {
                 "layershifter/tld-extract": "^1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0",
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -39,20 +43,20 @@
                 }
             ],
             "description": "PHP HTTP Utilities",
-            "time": "2019-04-19T11:24:44+00:00"
+            "time": "2017-03-15T20:35:45+00:00"
         },
         {
             "name": "layershifter/tld-database",
-            "version": "1.0.67",
+            "version": "1.0.69",
             "source": {
                 "type": "git",
                 "url": "https://github.com/layershifter/TLDDatabase.git",
-                "reference": "df901dd81106030e7f89da830641d870d68e2282"
+                "reference": "7423c7acdc5147268fb856f532a5d8875f6fe41e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/layershifter/TLDDatabase/zipball/df901dd81106030e7f89da830641d870d68e2282",
-                "reference": "df901dd81106030e7f89da830641d870d68e2282",
+                "url": "https://api.github.com/repos/layershifter/TLDDatabase/zipball/7423c7acdc5147268fb856f532a5d8875f6fe41e",
+                "reference": "7423c7acdc5147268fb856f532a5d8875f6fe41e",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +94,7 @@
                 "domain database",
                 "tld database"
             ],
-            "time": "2019-03-29T15:38:50+00:00"
+            "time": "2019-08-04T10:03:36+00:00"
         },
         {
             "name": "layershifter/tld-extract",
@@ -141,6 +145,7 @@
                 "TLDExtract",
                 "domain parser"
             ],
+            "abandoned": true,
             "time": "2018-09-28T10:05:58+00:00"
         },
         {
@@ -184,20 +189,21 @@
                 }
             ],
             "description": "Support package for TLDDatabase and TLDExtract",
+            "abandoned": true,
             "time": "2016-06-18T12:28:04+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-master",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
+                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
-                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
+                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +215,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -243,7 +249,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-02-06T07:57:58+00:00"
+            "time": "2020-01-13T11:15:53+00:00"
         },
         {
             "name": "true/punycode",
@@ -294,10 +300,8 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "hugsbrugs/php-http": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

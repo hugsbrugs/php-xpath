@@ -9,9 +9,8 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "hugsbrugs/php-http": "dev-master"
+        "hugsbrugs/php-http": "^1.0"
     },
     "autoload":{
     	"psr-4": {"Hug\\": "src/Hug/"}

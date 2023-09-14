@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "hugsbrugs/php-http": "^2.0"
+        "hugsbrugs/php-http": "dev-master"
     },
     "autoload":{
     	"psr-4": {"Hug\\": "src/Hug/"}
